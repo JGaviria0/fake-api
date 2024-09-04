@@ -6,7 +6,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  alive(): string {
+  alive() {
     return this.appService.alive();
   }
 }
