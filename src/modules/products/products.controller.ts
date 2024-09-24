@@ -51,7 +51,8 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string, @Request() req: any) {
-    return this.productsService.remove(+id, req.user.sub);
+  async remove(@Param('id') id: string, @Request() req: any) {
+    await this.productsService.remove(+id, req.user.sub);
+    return { message: 'Post deleted successfully' };
   }
 }

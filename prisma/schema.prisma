@@ -8,12 +8,13 @@ datasource db {
 }
 
 model user {
-  id         Int      @id @default(autoincrement()) @db.UnsignedInt
-  created_at DateTime @default(now()) @db.Timestamp(0)
-  name       String?  @db.VarChar(255)
-  email      String   @unique @db.VarChar(255)
-  password   String   @db.VarChar(255)
+  id         Int        @id @default(autoincrement()) @db.UnsignedInt
+  created_at DateTime   @default(now()) @db.Timestamp(0)
+  name       String?    @db.VarChar(255)
+  email      String     @unique @db.VarChar(255)
+  password   String     @db.VarChar(255)
   posts      post[]
+  category   category[]
 }
 
 model post {
@@ -35,8 +36,10 @@ model post {
 model category {
   category_id Int      @id @default(autoincrement()) @db.UnsignedInt
   name        String   @db.VarChar(255)
+  user_id     Int      @default(1) @db.UnsignedInt
   description String   @db.Text
   created_at  DateTime @default(now()) @db.Timestamp(0)
   image       String   @db.VarChar(255)
   posts       post[]
+  user        user     @relation(fields: [user_id], references: [id])
 }
