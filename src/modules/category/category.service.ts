@@ -5,7 +5,7 @@ import { PrismaService } from 'src/serives/prisma.service';
 
 @Injectable()
 export class CategoryService {
-  masterUser = 9;
+  masterUser = 28;
   constructor(private prisma: PrismaService) {}
   create(createCategoryDto: CreateCategoryDto, user_id: number) {
     return this.prisma.category.create({
